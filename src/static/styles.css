@@ -157,14 +157,15 @@ footer {
 
 
 /* List styling — keep only spacing, remove backgrounds/borders/scrolling */
+
 .participants-list {
   margin: 6px 0;
-  padding-left: 18px; /* standard bullet indent */
+  padding-left: 0;
   max-height: none;
   overflow: visible;
   background: none;
   border-radius: 0;
-  list-style: disc;
+  list-style: none;
   list-style-position: outside;
 }
 
@@ -172,6 +173,24 @@ footer {
   padding: 4px 0; /* vertical spacing between items */
   border-bottom: none;
   /* keep default text color and size */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delete-participant {
+  background: none;
+  border: none;
+  color: #c62828;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.delete-participant:hover {
+  background: #ffeaea;
 }
 
 /* Empty state */

@@ -39,7 +39,34 @@ document.addEventListener("DOMContentLoaded", () => {
           ul.className = "participants-list";
           details.participants.forEach((p) => {
             const li = document.createElement("li");
-            li.textContent = p;
+            const span = document.createElement("span");
+            span.textContent = p;
+            li.appendChild(span);
+
+            // Add delete icon button
+            const delBtn = document.createElement("button");
+            delBtn.className = "delete-participant";
+            delBtn.title = `Remove ${p}`;
+            delBtn.innerHTML = "&#128465;"; // Trash can icon
+            delBtn.addEventListener("click", async (e) => {
+              e.stopPropagation();
+              // Call API to unregister participant
+              try {
+                const response = await fetch(`/activities/${encodeURIComponent(name)}/unregister?email=${encodeURIComponent(p)}`, {
+                  method: "POST",
+                });
+                const result = await response.json();
+                if (response.ok) {
+                  // Refresh activities list
+                  fetchActivities();
+                } else {
+                  alert(result.detail || "Failed to remove participant.");
+                }
+              } catch (error) {
+                alert("Error removing participant.");
+              }
+            });
+            li.appendChild(delBtn);
             ul.appendChild(li);
           });
           participantsContent.appendChild(ul);
