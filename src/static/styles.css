@@ -63,6 +63,12 @@ section h3 {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(26, 35, 126, 0.08);
 }
 
 .activity-card h4 {
@@ -73,6 +79,12 @@ section h3 {
 .activity-card p {
   margin-bottom: 8px;
 }
+
+/* Make labels inside activity-card paragraphs consistent (Availability, Participants) */
+/* .activity-card p strong {
+  color: #1a237e;
+  font-weight: 600;
+} */
 
 .form-group {
   margin-bottom: 15px;
@@ -141,4 +153,31 @@ footer {
   margin-top: 30px;
   padding: 20px;
   color: #666;
+}
+
+
+/* List styling — keep only spacing, remove backgrounds/borders/scrolling */
+.participants-list {
+  margin: 6px 0;
+  padding-left: 18px; /* standard bullet indent */
+  max-height: none;
+  overflow: visible;
+  background: none;
+  border-radius: 0;
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.participants-list li {
+  padding: 4px 0; /* vertical spacing between items */
+  border-bottom: none;
+  /* keep default text color and size */
+}
+
+/* Empty state */
+.participants-empty {
+  color: #6b6b6b;
+  font-style: italic;
+  font-size: 13px;
+  margin: 6px 0;
 }
